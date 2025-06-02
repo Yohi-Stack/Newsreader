@@ -65,7 +65,7 @@ const App = () => {
   const isMobile = useIsMobile();
 
   const itemsPerPage = viewMode === "list"
-    ? 5
+    ? 4
     : isMobile
       ? 4
       : 8;
