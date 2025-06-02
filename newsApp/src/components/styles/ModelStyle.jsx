@@ -30,7 +30,7 @@ export const ModalCard = styled.div`
   /* Mobile View */
   @media (max-width: 768px) {
     width: 95%;
-    max-height: 85vh;
+    max-height: 70vh;
     border-radius: 8px;
   }
 `;

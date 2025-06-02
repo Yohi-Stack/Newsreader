@@ -6,7 +6,7 @@ export const Card = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 15px;
   position: relative;
-  height: ${(props) => (props.viewMode === "list" ? "80px" : "300px")};
+  height: ${(props) => (props.viewMode === "list" ? " fit-content" : "300px")};
   display: ${(props) => (props.viewMode === "list" ? "flex" : "block")};
   align-items: ${(props) => (props.viewMode === "list" ? "center" : "normal")};
   gap: ${(props) => (props.viewMode === "list" ? "15px" : "0")};
@@ -33,35 +33,30 @@ export const Card = styled.div`
    @media (max-width: 950px) {
    display: ${(props) => (props.viewMode === "list" ? "flex" : "block")};
     width: ${(props) => (props.viewMode === "list" ? "400px" : "300px")};
-    heigth:90vh;
-    padding: 15px;
-    gap:5px;
   }
  @media (min-width: 769px) and (max-width: 850px) {
-    width: ${(props) => (props.viewMode === "list" ? "600px" : "800px")};
+    width: ${(props) => (props.viewMode === "list" ? "90%" : "90%")};
     
-    margin-bottom: 15px;
   }
 
   @media (min-width: 500px) and (max-width: 768px) {
-    width: ${(props) => (props.viewMode === "list" ? "700px" : "300px")};
-    margin-bottom: 15px;
+    width: ${(props) => (props.viewMode === "list" ? "90%" : "90%")};
+    
   }
 
     @media (min-width: 401px) and (max-width: 499px) {
-    width: ${(props) => (props.viewMode === "list" ? "350px" : "300px")};
-    padding: 15px;
+    width: ${(props) => (props.viewMode === "list" ? "90%" : "90%")};
+    
   }
     @media (min-width: 300px) and (max-width: 400px) {
-    width: ${(props) => (props.viewMode === "list" ? "250px" : "250px")};
-    padding: 10px;
-    
+    width: ${(props) => (props.viewMode === "list" ? "90%" : "90%")};
+
   }
 `;
 
 export const Image = styled.div`
-  width: ${(props) => (props.viewMode === "grid" ? "100%" : "100px")};
-  height: ${(props) => (props.viewMode === "grid" ? "150px" : "70px")};
+  width: ${(props) => (props.viewMode === "grid" ? "100%" : "120px")};
+  height: ${(props) => (props.viewMode === "grid" ? "150px" : "120px")};
   background-color: #ccc; /* Placeholder for image */
   border-radius: 6px;
   background-image: ${(props) =>
@@ -70,11 +65,11 @@ export const Image = styled.div`
   background-position: center;
   margin-bottom:  ${(props) => (props.viewMode === "grid" ? "10px" : "0px")};
 
-  // /* Mobile View */
-  // @media (max-width: 768px) {
-  //   height: 120px; /* Smaller image height */
-  //   width: 100%; /* Full width in mobile */
-  // }
+  /* Mobile View */
+  @media (max-width: 768px) {
+    heigth:${(props) => (props.viewMode === "grid" ? "150px" : "100px")};
+    // width:${(props) => (props.viewMode === "list" ? "50%" : "90%")};
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -123,7 +118,7 @@ export const NewsDescription = styled.div`
   font-size: 14px;
   color: #444;
   display: -webkit-box;
-  -webkit-line-clamp:${(props) => (props.viewMode === "list" ? "1" : "2")};/* Number of lines */
+  -webkit-line-clamp:${(props) => (props.viewMode === "grid" ? "4" : "1")};/* Number of lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -135,10 +130,11 @@ export const NewsDescription = styled.div`
   }
 
   @media (min-width: 401px) and (max-width: 600px) {
-   display: ${(props) => (props.viewMode === "grid" ? "block" : "none")};
+   display: ${(props) => (props.viewMode === "grid" ? "block" : "block")};
   }
   @media (min-width: 300px) and (max-width: 400px) {
-   display: ${(props) => (props.viewMode === "grid" ? "block" : "none")};
+  font-size:10px;
+   display: ${(props) => (props.viewMode === "grid" ? "block" : "block")};
   }
 `;
 
@@ -159,6 +155,8 @@ export const NewsTitle = styled.h2`
 
   @media (min-width: 300px) and (max-width: 400px) {
    font-size:10px;
+   display: -webkit-box;
+  -webkit-line-clamp:${(props) => (props.viewMode === "grid" ? "2" : "1")};
   }
 `;
 
@@ -174,7 +172,7 @@ export const NewsDate = styled.p`
   }
  
   @media (min-width: 300px) and (max-width: 400px) {
-    font-size: 9px;
+    font-size: 8px;
     margin-bottom: 8px;
     
   }
@@ -189,6 +187,11 @@ export const Icon = styled.span`
   @media (max-width: 768px) {
     font-size: 12px;
     margin-right: 4px;
+  }
+    @media (min-width: 300px) and (max-width: 400px) {
+    font-size: 10px;
+    margin-bottom: 8px;
+    
   }
 `;
 
@@ -218,14 +221,14 @@ export const Author = styled.p`
     margin: 4px 0;
   }
   
-  @media (min-width: 401px) and (max-width: 600px) {
-   display:none;
+  // @media (min-width: 401px) and (max-width: 600px) {
+  //  display:block;
     
-  }
-  @media (min-width: 300px) and (max-width: 400px) {
-   display:none;
+  // }
+  // @media (min-width: 300px) and (max-width: 400px) {
+  //  display:block;
     
-  }
+  // }
 `;
 
 export const Source = styled.p`
@@ -238,14 +241,14 @@ export const Source = styled.p`
     font-size: 12px;
     margin: 4px 0;
   }
-    @media (min-width: 401px) and (max-width: 600px) {
-   display:none;
+  //   @media (min-width: 401px) and (max-width: 600px) {
+  //  display:none;
     
-  }
-  @media (min-width: 300px) and (max-width: 400px) {
-   display:none;
+  // }
+  // @media (min-width: 300px) and (max-width: 400px) {
+  //  display:none;
     
-  }
+  // }
 
 `;
 
